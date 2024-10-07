@@ -1,184 +1,109 @@
 package dev.sebastian.housinginsecurityapp.model;
 
-import dev.sebastian.housinginsecurityapp.constants.Description;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 
-@Component
+@Entity
+@Table
 public class Organization
 {
+	@Id
+	@Column
 	private int id;
+
+	@Column
 	private String name;
-	private String street;
-	private String borough;
-	private String state;
-	private int zipCode;
+
+	@Column
 	private String phoneNumber;
+
+	@Column
 	private URL website;
 
 	@Autowired
-	private Description description;
+	private Address address;
+
+	// ------------------------------------------------------------------------------
+	public Organization()
+	{
+	}
+
+	// ------------------------------------------------------------------------------
+	public Organization(int id, String name, String phoneNumber, URL website)
+	{
+		this.id = id;
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.website = website;
+	}
+
+	// ------------------------------------------------------------------------------
 
 
-	// ----------------------------------------------------
-	public Organization() {}
+	public Organization(int id, String name, String phoneNumber, URL website, Address address)
+	{
+		this.id = id;
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.website = website;
+		this.address = address;
+	}
+
+	// ------------------------------------------------------------------------------
 
 
-	// ---- Getters and setters ----------------------------------------
+	public int getId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
+	}
 
 	public String getName()
 	{
 		return name;
 	}
 
-	// -----------------------------------------------------------------
 	public void setName(String name)
 	{
 		this.name = name;
 	}
 
-	// -----------------------------------------------------------------
 	public String getPhoneNumber()
 	{
 		return phoneNumber;
 	}
 
-	// -----------------------------------------------------------------
 	public void setPhoneNumber(String phoneNumber)
 	{
 		this.phoneNumber = phoneNumber;
 	}
 
-	// -----------------------------------------------------------------
 	public URL getWebsite()
 	{
 		return website;
 	}
 
-	// -----------------------------------------------------------------
-	public void setWebsite(String website)
+	public void setWebsite(URL website)
 	{
-		this.website = validateURL(website);
+		this.website = website;
 	}
 
-	// -----------------------------------------------------------------
-
-	private URL validateURL(String url)
+	public Address getAddress()
 	{
-		URI uri;
-
-		try
-		{
-			uri = new URI(url);
-		}
-		catch (URISyntaxException e)
-		{
-			throw new RuntimeException(e);
-		}
-
-		try
-		{
-			return uri.toURL();
-		} catch (MalformedURLException e)
-		{
-			throw new RuntimeException(e);
-		}
+		return address;
 	}
 
-	// -----------------------------------------------------------------
-	public int getId()
+	public void setAddress(Address address)
 	{
-		return id;
-	}
-
-	// -----------------------------------------------------------------
-	public void setId(int id)
-	{
-		this.id = id;
-	}
-
-	// -----------------------------------------------------------------
-	public String getStreet()
-	{
-		return street;
-	}
-
-	// -----------------------------------------------------------------
-	public void setStreet(String street)
-	{
-		this.street = street;
-	}
-
-	// -----------------------------------------------------------------
-	public String getBorough()
-	{
-		return borough;
-	}
-
-	// -----------------------------------------------------------------
-	public void setBorough(String borough)
-	{
-		this.borough = borough;
-	}
-
-	// -----------------------------------------------------------------
-	public String getState()
-	{
-		return state;
-	}
-
-	// -----------------------------------------------------------------
-	public void setState(String state)
-	{
-		this.state = state;
-	}
-
-	// -----------------------------------------------------------------
-	public int getZipCode()
-	{
-		return zipCode;
-	}
-
-	// -----------------------------------------------------------------
-	public void setZipCode(int zipCode)
-	{
-		this.zipCode = zipCode;
-	}
-
-	// -----------------------------------------------------------------
-	public Description getDescription()
-	{
-		return description;
-	}
-
-	// -----------------------------------------------------------------
-	public void setDescription(String description)
-	{
-		if (description.equals("Drop-In Center"))
-		{
-			this.description = Description.DROP_IN_CENTER;
-		}
-		else
-		{
-			this.description = Description.SERVICE_AND_SUPPORT_BUSES;
-		}
-	}
-
-	// -----------------------------------------------------------------
-	@Override
-	public String toString()
-	{
-		return "Organization Name: " + name + '\n' +
-				"Address{" +
-				"street='" + street + '\'' +
-				", borough='" + borough + '\'' +
-				", state='" + state + '\'' +
-				", zipCode=" + zipCode +
-				'}';
+		this.address = this.address;
 	}
 }

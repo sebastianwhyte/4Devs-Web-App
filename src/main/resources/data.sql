@@ -1,5 +1,6 @@
---USE
---DROP TABLE IF EXISTS Organization;
+--USE;
+
+DROP TABLE IF EXISTS Organization;
 
 
 CREATE TABLE Organization (
@@ -9,7 +10,6 @@ CREATE TABLE Organization (
     borough VARCHAR(10) NOT NULL,
     state VARCHAR(2) NOT NULL,
     zip_code INT(5) NOT NULL,
-    business_hours VARCHAR(50),
     phone_number VARCHAR(10) NOT NULL,
     website VARCHAR(255),
     description VARCHAR(255)
