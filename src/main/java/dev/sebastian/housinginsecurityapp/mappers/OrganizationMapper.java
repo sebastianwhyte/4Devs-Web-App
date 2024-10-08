@@ -22,10 +22,10 @@ public class OrganizationMapper implements RowMapper<Organization>
 
 		org.setId(rs.getInt("id"));
 		org.setName(rs.getString("name"));
-		org.setAddress(new Address(rs.getString("street"),
+		/*org.setAddress(new Address(rs.getString("street"),
 									rs.getString("borough"),
 									rs.getString("state"),
-									rs.getInt("zip_code")));
+									rs.getInt("zip_code")));*/
 		org.setPhoneNumber(rs.getString("phone_number"));
 
 		try

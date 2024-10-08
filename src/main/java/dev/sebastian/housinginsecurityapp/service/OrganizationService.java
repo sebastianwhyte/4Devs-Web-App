@@ -50,6 +50,8 @@ public class OrganizationService
 		}
 		catch (NoSuchElementException exception)
 		{
+			// Add logger here
+			System.out.println(" " + exception.getClass() + ": " + exception.getMessage());
 			throw new OrganizationNotFoundException("Organization with ID: + " + id + " not found!");
 		}
 

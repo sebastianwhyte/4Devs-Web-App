@@ -2,7 +2,7 @@ package dev.sebastian.housinginsecurityapp.model;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Address
 {
 	private String street;

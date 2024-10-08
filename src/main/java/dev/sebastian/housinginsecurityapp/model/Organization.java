@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.URL;
 
@@ -25,8 +24,9 @@ public class Organization
 	@Column
 	private URL website;
 
-	@Autowired
-	private Address address;
+	//@Autowired
+	//@Transient
+	//private Address address;
 
 	// ------------------------------------------------------------------------------
 	public Organization()
@@ -45,14 +45,14 @@ public class Organization
 	// ------------------------------------------------------------------------------
 
 
-	public Organization(int id, String name, String phoneNumber, URL website, Address address)
+	/*public Organization(int id, String name, String phoneNumber, URL website, Address address)
 	{
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.website = website;
 		this.address = address;
-	}
+	}*/
 
 	// ------------------------------------------------------------------------------
 
@@ -97,7 +97,7 @@ public class Organization
 		this.website = website;
 	}
 
-	public Address getAddress()
+	/*public Address getAddress()
 	{
 		return address;
 	}
@@ -105,5 +105,5 @@ public class Organization
 	public void setAddress(Address address)
 	{
 		this.address = this.address;
-	}
+	}*/
 }
