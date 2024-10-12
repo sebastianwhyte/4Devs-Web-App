@@ -24,7 +24,6 @@ public class OrganizationController
 
 	// ----------------------------------------------------------------------------
 
-	/*
 	/**
 	 *  Retrieves all organizations
 	 * @return list consisting of all organizations
@@ -43,20 +42,29 @@ public class OrganizationController
 	 * @return organization
 	 */
 	@GetMapping("/{id}")
-	public Organization getOrganizationById(@PathVariable String id) throws OrganizationNotFoundException
+	public Organization getOrganizationById(@PathVariable String id)
 	{
 		return organizationService.getOrganizationById(id);
 	}
 
 	// ----------------------------------------------------------------------------
 
-	/** Adds organization to the database
-	 *
+	/**
 	 * @param newOrganization	the organization to add
 	 */
 	@PostMapping("/add")
 	public Organization addNewOrganization(@RequestBody Organization newOrganization)
 	{
 		return organizationService.addNewOrganization(newOrganization);
+	}
+
+	// ----------------------------------------------------------------------------
+	/**
+	 * @return organization to be deleted
+	 */
+	@DeleteMapping("/delete/{id}")
+	public Organization deleteOrganizationById(@PathVariable("id") String id)
+	{
+		return organizationService.deleteOrganizationByid(id);
 	}
 }

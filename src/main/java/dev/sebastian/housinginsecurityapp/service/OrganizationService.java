@@ -1,7 +1,6 @@
 package dev.sebastian.housinginsecurityapp.service;
 
 import dev.sebastian.housinginsecurityapp.dao.OrganizationRepository;
-import dev.sebastian.housinginsecurityapp.exception.OrganizationNotFoundException;
 import dev.sebastian.housinginsecurityapp.model.Organization;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,7 +41,13 @@ public class OrganizationService
 	}
 
 	// ----------------------------------------------------------------------------
-	public Organization getOrganizationById(@PathVariable String id) throws OrganizationNotFoundException
+
+	/** Retrieves organization with the specified id
+	 *
+	 * @param id	id of organization to search for
+	 * @return	organization with the given id
+	 */
+	public Organization getOrganizationById(@PathVariable String id)
 	{
 		Optional<Organization> chosenOrganization = organizationRepository.findById(parseInt(id));
 
@@ -50,6 +55,7 @@ public class OrganizationService
 		{
 			if (chosenOrganization.isPresent())
 			{
+				logger.info("Organization successfully retrieved.");
 				return chosenOrganization.get();
 			}
 			else
@@ -59,17 +65,48 @@ public class OrganizationService
 		}
 		catch (NoSuchElementException exception)
 		{
-			logger.fatal(" " + exception.getClass() + ": " + exception.getMessage());
-
-			//throw new OrganizationNotFoundException("Organization with ID: + " + id + " not found!");
+			logger.fatal(" " + exception.getClass() + ": Organization does not exist in database... " + exception.getMessage());
 		}
 
 		return null;
 	}
 
 	// ----------------------------------------------------------------------------
+	/**
+	 * @param newOrganization	the organization to add
+	 */
 	public Organization addNewOrganization(Organization newOrganization)
 	{
 		return organizationRepository.save(newOrganization);
+	}
+
+	// ----------------------------------------------------------------------------
+	/**
+	 *
+	 * @param id	id of organization to delete
+	 * @return deleted organization
+	 */
+	public Organization deleteOrganizationByid(String id)
+	{
+		Optional<Organization> organizationToBeDeleted = organizationRepository.findById(parseInt(id));
+
+		try
+		{
+			if (organizationToBeDeleted.isPresent())
+			{
+				organizationRepository.delete(organizationToBeDeleted.get());
+				logger.info("Organization successfully deleted.");
+			}
+			else
+			{
+				logger.warn("Deletion Failed -- Chosen Organization does not exist in database.");
+			}
+		}
+		catch (NoSuchElementException exception)
+		{
+			logger.fatal(" " + exception.getClass() + ": " + exception.getMessage());
+		}
+
+		return null;
 	}
 }
