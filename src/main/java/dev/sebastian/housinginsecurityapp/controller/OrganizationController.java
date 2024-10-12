@@ -4,10 +4,7 @@ import dev.sebastian.housinginsecurityapp.exception.OrganizationNotFoundExceptio
 import dev.sebastian.housinginsecurityapp.model.Organization;
 import dev.sebastian.housinginsecurityapp.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,6 +45,18 @@ public class OrganizationController
 	@GetMapping("/{id}")
 	public Organization getOrganizationById(@PathVariable String id) throws OrganizationNotFoundException
 	{
-		return organizationService.getOrganizationById(Integer.parseInt(id));
+		return organizationService.getOrganizationById(id);
+	}
+
+	// ----------------------------------------------------------------------------
+
+	/** Adds organization to the database
+	 *
+	 * @param newOrganization	the organization to add
+	 */
+	@PostMapping("/add")
+	public Organization addNewOrganization(@RequestBody Organization newOrganization)
+	{
+		return organizationService.addNewOrganization(newOrganization);
 	}
 }

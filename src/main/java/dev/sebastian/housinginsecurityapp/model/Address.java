@@ -1,13 +1,24 @@
 package dev.sebastian.housinginsecurityapp.model;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 //@Component
+@Entity
+@Table(name = "Address")
 public class Address
 {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column
+	private int id;
+	@Column
 	private String street;
+	@Column
 	private String borough;
+	@Column
 	private String state;
+	@Column
 	private int zipCode;
 
 	// ----------------------------------------------------------------------------

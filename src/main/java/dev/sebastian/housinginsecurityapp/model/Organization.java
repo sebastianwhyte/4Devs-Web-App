@@ -1,19 +1,17 @@
 package dev.sebastian.housinginsecurityapp.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.net.URL;
 
 @Entity
-@Table
+@Table (name = "organization")
 public class Organization
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column
-	private int id;
+	private int org_id;
 
 	@Column
 	private String name;
@@ -34,9 +32,9 @@ public class Organization
 	}
 
 	// ------------------------------------------------------------------------------
-	public Organization(int id, String name, String phoneNumber, URL website)
+	public Organization(int org_id, String name, String phoneNumber, URL website)
 	{
-		this.id = id;
+		this.org_id = org_id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.website = website;
@@ -57,14 +55,14 @@ public class Organization
 	// ------------------------------------------------------------------------------
 
 
-	public int getId()
+	public int getOrg_id()
 	{
-		return id;
+		return org_id;
 	}
 
-	public void setId(int id)
+	public void setOrg_id(int id)
 	{
-		this.id = id;
+		this.org_id = id;
 	}
 
 	public String getName()
