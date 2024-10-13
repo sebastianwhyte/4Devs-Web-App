@@ -1,12 +1,19 @@
+/*** Class that controls API calls for the various types of organizations
+ *
+ * @author Sebastian Whyte
+ * @version 1.0
+ * @date Oct 02 2024
+ */
+
 package dev.sebastian.housinginsecurityapp.controller;
 
-import dev.sebastian.housinginsecurityapp.exception.OrganizationNotFoundException;
 import dev.sebastian.housinginsecurityapp.model.Organization;
 import dev.sebastian.housinginsecurityapp.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/organizations")

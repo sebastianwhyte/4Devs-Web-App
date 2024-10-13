@@ -1,3 +1,10 @@
+/** Model class that represents an organization
+ *
+ * @author Sebastian Whyte
+ * @version 1.0
+ * @date Oct 02 2024
+ */
+
 package dev.sebastian.housinginsecurityapp.model;
 
 import jakarta.persistence.*;
@@ -8,19 +15,20 @@ import java.net.URL;
 @Table (name = "organization")
 public class Organization
 {
+	// TODO - Fix auto increment id
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column
-	private int org_id;
+	int org_id;
 
 	@Column
-	private String name;
+	String name;
 
 	@Column
-	private String phoneNumber;
+	String phoneNumber;
 
 	@Column
-	private URL website;
+	URL website;
 
 	//@Autowired
 	//@Transient
@@ -29,6 +37,17 @@ public class Organization
 	// ------------------------------------------------------------------------------
 	public Organization()
 	{
+	}
+
+	// ------------------------------------------------------------------------------
+	public Organization(String name, String phoneNumber, URL website)
+	{
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.website = website;
+
+		// DEBUG
+		System.out.println(getName());
 	}
 
 	// ------------------------------------------------------------------------------

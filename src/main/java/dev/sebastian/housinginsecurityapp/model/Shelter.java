@@ -1,11 +1,19 @@
+/*** Model class that represents a shelter
+ *
+ * @author Sebastian Whyte
+ * @version 1.0
+ * @date Oct 06 2024
+ */
+
 package dev.sebastian.housinginsecurityapp.model;
 
 import dev.sebastian.housinginsecurityapp.constants.ShelterType;
-import org.springframework.stereotype.Component;
+import jakarta.persistence.Entity;
 
+import java.net.URL;
 import java.util.List;
 
-@Component
+@Entity
 public class Shelter extends Organization
 {
 	private List<String> servicesOffered;
@@ -16,8 +24,19 @@ public class Shelter extends Organization
 	// ----------------------------------------------------------------------------
 	public Shelter()
 	{
+
 	}
 
+	// ------------------------------------------------------------------------------
+	public Shelter(String name, String phoneNumber, URL website)
+	{
+		super(name, phoneNumber, website);
+
+		// DEBUG
+		System.out.println("After calling super");
+	}
+
+	// ------------------------------------------------------------------------------
 	public Shelter(List<String> servicesOffered, ShelterType type, List<String> populationServed)
 	{
 		this.servicesOffered = servicesOffered;
@@ -59,7 +78,7 @@ public class Shelter extends Organization
 
 	public void setType(String type)
 	{
-		if (type.equals("DROP_IN_CENTER"))
+		if (type.equalsIgnoreCase("DROP_IN_CENTER"))
 		{
 			this.type = ShelterType.DROP_IN_CENTER;
 		}

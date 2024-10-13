@@ -1,3 +1,10 @@
+/** Service class responsible for handling business logic behind the organization api requests
+ *
+ * @author Sebastian Whyte
+ * @version 1.0
+ * @date Oct 02 2024
+ */
+
 package dev.sebastian.housinginsecurityapp.service;
 
 import dev.sebastian.housinginsecurityapp.dao.OrganizationRepository;

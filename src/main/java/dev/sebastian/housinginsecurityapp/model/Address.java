@@ -1,7 +1,13 @@
+/** Model class that represents an address
+ *
+ * @author Sebastian Whyte
+ * @version 1.0
+ * @date Oct 06 2024
+ */
+
 package dev.sebastian.housinginsecurityapp.model;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
 //@Component
 @Entity
@@ -11,7 +17,7 @@ public class Address
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column
-	private int id;
+	private int address_id;
 	@Column
 	private String street;
 	@Column
