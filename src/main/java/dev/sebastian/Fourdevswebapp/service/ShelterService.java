@@ -5,10 +5,10 @@
  * @date Oct 12 2024
  */
 
-package dev.sebastian.housinginsecurityapp.service;
+package dev.sebastian.Fourdevswebapp.service;
 
-import dev.sebastian.housinginsecurityapp.dao.ShelterRepository;
-import dev.sebastian.housinginsecurityapp.model.Shelter;
+import dev.sebastian.Fourdevswebapp.dao.ShelterRepository;
+import dev.sebastian.Fourdevswebapp.model.Shelter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

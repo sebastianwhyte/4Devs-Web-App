@@ -1,4 +1,4 @@
-package dev.sebastian.housinginsecurityapp.constants;
+package dev.sebastian.Fourdevswebapp.constants;
 
 public enum ShelterType
 {

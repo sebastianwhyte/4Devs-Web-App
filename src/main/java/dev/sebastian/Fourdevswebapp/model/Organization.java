@@ -5,7 +5,7 @@
  * @date Oct 02 2024
  */
 
-package dev.sebastian.housinginsecurityapp.model;
+package dev.sebastian.Fourdevswebapp.model;
 
 import jakarta.persistence.*;
 

@@ -5,9 +5,9 @@
  * @date Oct 12 2024
  */
 
-package dev.sebastian.housinginsecurityapp.dao;
+package dev.sebastian.Fourdevswebapp.dao;
 
-import dev.sebastian.housinginsecurityapp.model.Shelter;
+import dev.sebastian.Fourdevswebapp.model.Shelter;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

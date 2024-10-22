@@ -5,10 +5,10 @@
  * @date Oct 02 2024
  */
 
-package dev.sebastian.housinginsecurityapp.controller;
+package dev.sebastian.Fourdevswebapp.controller;
 
-import dev.sebastian.housinginsecurityapp.model.Organization;
-import dev.sebastian.housinginsecurityapp.service.OrganizationService;
+import dev.sebastian.Fourdevswebapp.model.Organization;
+import dev.sebastian.Fourdevswebapp.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -5,10 +5,10 @@
  * @date Oct 02 2024
  */
 
-package dev.sebastian.housinginsecurityapp.service;
+package dev.sebastian.Fourdevswebapp.service;
 
-import dev.sebastian.housinginsecurityapp.dao.OrganizationRepository;
-import dev.sebastian.housinginsecurityapp.model.Organization;
+import dev.sebastian.Fourdevswebapp.dao.OrganizationRepository;
+import dev.sebastian.Fourdevswebapp.model.Organization;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

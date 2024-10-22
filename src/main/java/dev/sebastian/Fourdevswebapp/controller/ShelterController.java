@@ -5,10 +5,10 @@
  * @date Oct 12 2024
  */
 
-package dev.sebastian.housinginsecurityapp.controller;
+package dev.sebastian.Fourdevswebapp.controller;
 
-import dev.sebastian.housinginsecurityapp.model.Shelter;
-import dev.sebastian.housinginsecurityapp.service.ShelterService;
+import dev.sebastian.Fourdevswebapp.model.Shelter;
+import dev.sebastian.Fourdevswebapp.service.ShelterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

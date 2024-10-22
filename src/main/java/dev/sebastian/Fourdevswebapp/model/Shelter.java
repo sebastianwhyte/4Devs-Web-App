@@ -5,9 +5,9 @@
  * @date Oct 06 2024
  */
 
-package dev.sebastian.housinginsecurityapp.model;
+package dev.sebastian.Fourdevswebapp.model;
 
-import dev.sebastian.housinginsecurityapp.constants.ShelterType;
+import dev.sebastian.Fourdevswebapp.constants.ShelterType;
 import jakarta.persistence.Entity;
 
 import java.net.URL;
