@@ -11,8 +11,8 @@
     <groupId>dev.sebastian</groupId>
     <artifactId>4Devs-Housing-Web-App</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Housing-Insecurity-App</name>
-    <description>Housing-Insecurity-App</description>
+    <name>4Devs-Housing-Web-App</name>
+    <description>4Devs-Housing-Web-App</description>
     <url/>
     <licenses>
         <license/>
@@ -105,7 +105,6 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
