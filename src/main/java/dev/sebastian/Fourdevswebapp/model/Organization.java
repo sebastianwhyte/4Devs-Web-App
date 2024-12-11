@@ -7,6 +7,7 @@
 
 package dev.sebastian.Fourdevswebapp.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.net.URL;
@@ -16,18 +17,27 @@ import java.net.URL;
 public class Organization
 {
 	// TODO - Fix auto increment id
+	@TableGenerator(
+			name = "yourTableGenerator",
+			allocationSize = 1,
+			initialValue = 1
+	)
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "yourTableGenerator")
 	@Column
-	int org_id;
+	@JsonProperty("org_id")
+	int orgId;
 
-	@Column
+	@Column (name = "name")
+	@JsonProperty("name")
 	String name;
 
-	@Column
+	@Column (name = "phone_number")
+	@JsonProperty("phone_number")
 	String phoneNumber;
 
-	@Column
+	@Column (name = "website")
+	@JsonProperty("website")
 	URL website;
 
 	//@Autowired
@@ -51,9 +61,9 @@ public class Organization
 	}
 
 	// ------------------------------------------------------------------------------
-	public Organization(int org_id, String name, String phoneNumber, URL website)
+	public Organization(int orgId, String name, String phoneNumber, URL website)
 	{
-		this.org_id = org_id;
+		this.orgId = orgId;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.website = website;
@@ -74,14 +84,14 @@ public class Organization
 	// ------------------------------------------------------------------------------
 
 
-	public int getOrg_id()
+	public int getOrgId()
 	{
-		return org_id;
+		return orgId;
 	}
 
-	public void setOrg_id(int id)
+	public void setOrgId(int id)
 	{
-		this.org_id = id;
+		this.orgId = id;
 	}
 
 	public String getName()

@@ -7,8 +7,10 @@
 
 package dev.sebastian.Fourdevswebapp.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.sebastian.Fourdevswebapp.constants.ShelterType;
-import jakarta.persistence.Entity;
+import dev.sebastian.Fourdevswebapp.model.Resource;
+import jakarta.persistence.*;
 
 import java.net.URL;
 import java.util.List;
@@ -16,10 +18,18 @@ import java.util.List;
 @Entity
 public class Shelter extends Organization
 {
-	private List<String> servicesOffered;
+	@ManyToMany
+	@JoinTable(name = "organizationresources",
+				joinColumns = @JoinColumn(name = "org_id"),
+				inverseJoinColumns = @JoinColumn(name = "resource_id"))
+	private List<Resource> resourcesOffered;
+
+	//@Enumerated(EnumType.STRING)
+	@JsonProperty("type")
 	private ShelterType type;
 
-	private List<String> populationServed;
+	@OneToMany(mappedBy = "populationType")
+	private List<Population> populationServed;
 
 	// ----------------------------------------------------------------------------
 	public Shelter()
@@ -37,23 +47,23 @@ public class Shelter extends Organization
 	}
 
 	// ------------------------------------------------------------------------------
-	public Shelter(List<String> servicesOffered, ShelterType type, List<String> populationServed)
+	public Shelter(List<Resource> resourcesOffered, ShelterType type, List<Population> populationServed)
 	{
-		this.servicesOffered = servicesOffered;
+		this.resourcesOffered = resourcesOffered;
 		this.type = type;
 		this.populationServed = populationServed;
 	}
 
 	// ----------------------------------------------------------------------------
 
-	public void addServices(String serviceOffered)
+	public void addServices(Resource resourcesOffered)
 	{
-		servicesOffered.add(serviceOffered);
+		this.resourcesOffered.add(resourcesOffered);
 	}
 
 	// ----------------------------------------------------------------------------
 
-	public void addPopulation(String population)
+	public void addPopulation(Population population)
 	{
 		populationServed.add(population);
 	}
@@ -61,14 +71,14 @@ public class Shelter extends Organization
 	// ----------------------------------------------------------------------------
 
 
-	public List<String> getServicesOffered()
+	public List<Resource> getResourcesOffered()
 	{
-		return servicesOffered;
+		return resourcesOffered;
 	}
 
-	public void setServicesOffered(List<String> servicesOffered)
+	public void setResourcesOffered(List<Resource> resourcesOffered)
 	{
-		this.servicesOffered = servicesOffered;
+		this.resourcesOffered = resourcesOffered;
 	}
 
 	public ShelterType getType()
@@ -78,7 +88,7 @@ public class Shelter extends Organization
 
 	public void setType(String type)
 	{
-		if (type.equalsIgnoreCase("DROP_IN_CENTER"))
+		if (type.equalsIgnoreCase("DROP_IN_CENTER") || type.equalsIgnoreCase("Drop In Center"))
 		{
 			this.type = ShelterType.DROP_IN_CENTER;
 		}
@@ -88,12 +98,12 @@ public class Shelter extends Organization
 		}
 	}
 
-	public List<String> getPopulationServed()
+	public List<Population> getPopulationServed()
 	{
 		return populationServed;
 	}
 
-	public void setPopulationServed(List<String> populationServed)
+	public void setPopulationServed(List<Population> populationServed)
 	{
 		this.populationServed = populationServed;
 	}
